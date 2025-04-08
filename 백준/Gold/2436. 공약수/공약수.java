@@ -11,7 +11,7 @@ class Main{
         StringTokenizer s=new StringTokenizer(I.readLine());
         int q=Integer.parseInt(s.nextToken()),w=Integer.parseInt(s.nextToken()),m=100000000,x=0,y=0,ax=0,ay=0,e=w/q;
         for(int i=1;i*i<=e;i++){
-            x=i*q; y=e/i*q;
+            x=i*q; y=w/i;
             int t=x+y;
             if(e%i==0&&t<m&&gcd(x,y)==q){
                 ax=x; ay=y;
