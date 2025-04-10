@@ -16,17 +16,17 @@ class Main{
         m--;
         for(int i=m;i>-1;i--){
             int t=s1.charAt(i)-'0'+(s2.charAt(i)-'0')+(e==true?1:0);
-            a.insert(0,t%10);
+            a.append(t%10);
             e=t/10>0;
         }
-        if(e==true)a.insert(0,1);
+        if(e==true)a.append(1);
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
         String s1=I.readLine(),s2=I.readLine();
         add(s1,s2);
-        O.write(a+"\n");
+        O.write(a.reverse()+"\n");
         O.flush();
     }
 }
