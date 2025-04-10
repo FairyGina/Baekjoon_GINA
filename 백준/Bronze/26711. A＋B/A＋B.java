@@ -15,9 +15,9 @@ class Main{
         boolean e=false;
         m--;
         for(int i=m;i>-1;i--){
-            int t=s1.charAt(i)-'0'+(s2.charAt(i)-'0');
-            a.insert(0,(t+(e==true?1:0))%10);
-            if((t+(e==true?1:0))/10>0) e=true; else e=false;
+            int t=s1.charAt(i)-'0'+(s2.charAt(i)-'0')+(e==true?1:0);
+            a.insert(0,t%10);
+            e=t/10>0;
         }
         if(e==true)a.insert(0,1);
     }
