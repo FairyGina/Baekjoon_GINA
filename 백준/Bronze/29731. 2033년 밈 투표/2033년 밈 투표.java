@@ -20,7 +20,10 @@ class Main{
         int t=Integer.parseInt(I.readLine());
         while(t-->0){
             String s=I.readLine();
-            if(!m.contains(s)) as="Yes";
+            if(!m.contains(s)){
+                as="Yes";
+                break;
+            }
         }
         O.write(as+"\n");
         O.flush();
