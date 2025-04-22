@@ -1,5 +1,4 @@
 import java.io.*;
-import static java.lang.Math.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -14,34 +13,19 @@ class Main{
         m.put('+',(a,b)->a+b);
         m.put('-',(a,b)->a-b);
         m.put('*',(a,b)->a*b);
-        m.put('/',(a,b)->{
-            if(a<0^b<0) return -(abs(a)/abs(b));
-            return a/b;
-        });
+        m.put('/',(a,b)->a/b);
 
         StringTokenizer s=new StringTokenizer(I.readLine());
 
-        int[] n=new int[3];
-        char[] ir=new char[2];
+        int a=Integer.parseInt(s.nextToken());
+        char q=s.nextToken().charAt(0);
+        int b=Integer.parseInt(s.nextToken());
+        char w=s.nextToken().charAt(0);
+        int c=Integer.parseInt(s.nextToken());
 
-        for(int i=0;i<2;i++){
-            n[i]=Integer.parseInt(s.nextToken());
-            ir[i]=s.nextToken().charAt(0);
-        }
-        n[2]=Integer.parseInt(s.nextToken());
+        int r1=m.get(w).apply((m.get(q).apply(a,b)),c),r2=m.get(q).apply(a,m.get(w).apply(b,c));
 
-        int r1=m.get(ir[1]).apply((m.get(ir[0]).apply(n[0],n[1])),n[2]);
-        int r2=m.get(ir[0]).apply(n[0],m.get(ir[1]).apply(n[1],n[2]));
-
-        if(r1<r2){
-            n[0]=r1;
-            n[1]=r2;
-        }else{
-            n[0]=r2;
-            n[1]=r1;
-        }
-        
-        as.append(n[0]).append('\n').append(n[1]);
+        as.append(Math.min(r1,r2)).append('\n').append(Math.max(r1,r2));
 
         O.write(as+"\n");
         O.flush();
