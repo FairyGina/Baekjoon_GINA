@@ -12,8 +12,7 @@ class Main{
             lk.add(i);
         }
         while(!lk.isEmpty()){
-            int sz=lk.size();
-            id=(id+k-1)%sz;
+            id=(id+k-1)%lk.size();
             as.append(lk.remove(id)).append(", ");
         }
         as.delete(as.length()-2,as.length());
