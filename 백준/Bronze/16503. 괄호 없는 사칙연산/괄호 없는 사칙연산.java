@@ -1,19 +1,20 @@
 import java.io.*;
 import java.util.*;
-import java.util.function.*;
 
 class Main{
+    public static int c(int a,int b,char r){
+        switch (r) {
+            case '+': return a+b;
+            case '-': return a-b;
+            case '*': return a*b;
+            default: return a/b;
+        }
+    }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
 
         StringBuilder as=new StringBuilder();
-
-        Map<Character,BiFunction<Integer,Integer,Integer>> m=new HashMap<>();
-        m.put('+',(a,b)->a+b);
-        m.put('-',(a,b)->a-b);
-        m.put('*',(a,b)->a*b);
-        m.put('/',(a,b)->a/b);
 
         StringTokenizer s=new StringTokenizer(I.readLine());
 
@@ -23,7 +24,8 @@ class Main{
         char w=s.nextToken().charAt(0);
         int c=Integer.parseInt(s.nextToken());
 
-        int r1=m.get(w).apply((m.get(q).apply(a,b)),c),r2=m.get(q).apply(a,m.get(w).apply(b,c));
+        int r1=c(c(a,b,q),c,w);
+        int r2=c(a,c(b,c,w),q);
 
         as.append(Math.min(r1,r2)).append('\n').append(Math.max(r1,r2));
 
