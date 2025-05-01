@@ -7,15 +7,13 @@ class Main{
         int t=Integer.parseInt(I.readLine()),pi=0;
         int[] pn=new int[78498];
         b[0]=b[1]=true;
-        for(int i=2;i*i<1000001;i++){
+        for(int i=2;i<1000001;i++){
             if(!b[i]){
-                for(int j=i*i;j<1000001;j+=i){
+                pn[pi++]=i;
+                for(int j=i+i;j<1000001;j+=i){
                     b[j]=true;
                 }
             }
-        }
-        for(int i=0;i<1000001;i++){
-            if(!b[i]) pn[pi++]=i;
         }
         while(t-->0){
             int n=Integer.parseInt(I.readLine()),r=0,l=n/2;
