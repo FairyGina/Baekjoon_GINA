@@ -12,14 +12,15 @@ class Main{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
         int t=Integer.parseInt(I.readLine());
-        b[2]=true; b[3]=true;
         for(int i=5;i<1000001;i++) b[i]=iP(i);
+        b[2]=true; b[3]=true;
         while(t-->0){
             int n=Integer.parseInt(I.readLine()),r=0;
             int l=n/2;
-            for(int i=2;i<=l;i++){
-                if(b[i]&&b[n-i]) r++;
-            }
+            if(n<9) r=1;
+            else if(b[3]&&b[n-3]) r++;
+            for(int i=5;i<=l;i+=6) if(b[i]&&b[n-i]) r++;
+            for(int i=7;i<=l;i+=6) if(b[i]&&b[n-i]) r++;
             O.write(r+"\n");
         }
         O.flush();
