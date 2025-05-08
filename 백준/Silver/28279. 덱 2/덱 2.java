@@ -6,9 +6,6 @@ class Main{
     static boolean et(){
         return end-front<1;
     }
-    static int look(int id){
-        return et()?-1:dq[id];
-    }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder as=new StringBuilder();
@@ -25,12 +22,10 @@ class Main{
                     dq[end++]=x;
                     break;
                 case 3:
-                    as.append(look(front)).append('\n');
-                    if(!et()) front++;
+                    as.append(et()?-1:dq[front++]).append('\n');
                     break;
                 case 4:
-                    as.append(look(end-1)).append('\n');
-                    if(!et()) end--;
+                    as.append(et()?-1:dq[--end]).append('\n');
                     break;
                 case 5:
                     as.append(end-front).append('\n');
@@ -39,10 +34,10 @@ class Main{
                     as.append(et()?1:0).append('\n');
                     break;
                 case 7:
-                    as.append(look(front)).append('\n');
+                    as.append(et()?-1:dq[front]).append('\n');
                     break;
                 default:
-                    as.append(look(end-1)).append('\n');
+                    as.append(et()?-1:dq[end-1]).append('\n');
                     break;
             }
         }
