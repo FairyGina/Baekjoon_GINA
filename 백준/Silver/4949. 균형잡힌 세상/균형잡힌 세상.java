@@ -12,22 +12,18 @@ class Main{
             if(!sk.empty()&&t==sk.peek()) sk.pop();
             else{
                 sk.push(t);
-                return true;
+                return false;
             }
         }
-        return false;
+        return sk.empty();
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder as=new StringBuilder();
         String s;
         while(!(s=I.readLine()).equals(".")){
-            StringTokenizer st=new StringTokenizer(s);
             sk=new Stack<>();
-            while (st.hasMoreTokens()){
-                if(bf(st.nextToken())) break;
-            }
-            as.append(sk.empty()?"yes":"no").append('\n');
+            as.append(bf(s)?"yes":"no").append('\n');
         }
         System.out.println(as);
     }
