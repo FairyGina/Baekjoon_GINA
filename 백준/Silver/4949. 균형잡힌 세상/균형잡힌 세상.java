@@ -1,21 +1,20 @@
 import java.io.*;
-import java.util.*;
 class Main{
     public static boolean bf(String s){
-        int l=s.length();
-        Stack<Character> sk=new Stack<>();
+        int l=s.length(),t=-1;
+        char[] sk=new char[l];
         for(int i=0;i<l;i++){
-            char t=s.charAt(i);
-            if(t=='[') sk.push(']');
-            if(t=='(') sk.push(')');
-            if(!(t==')'||t==']')) continue;
-            if(sk.empty()||t!=sk.peek()){
-                sk.push(t);
+            char c=s.charAt(i);
+            if(c=='[') sk[++t]=']';
+            if(c=='(') sk[++t]=')';
+            if(!(c==')'||c==']')) continue;
+            if(t<0||c!=sk[t]){
+                t++;
                 return false;
             }
-            sk.pop();
+            t--;
         }
-        return sk.empty();
+        return t<0;
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
