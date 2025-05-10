@@ -8,10 +8,10 @@ class Main{
         int n=Integer.parseInt(st.nextToken()),k=Integer.parseInt(st.nextToken());
         if(k==0||n-k==0) k=1;
         else{
-            int mx=Math.max(n-k,k),mn=Math.min(n-k,k);
-            for(int i=n-1;i>mx;i--)n*=i;
-            for(int i=mn-1;i>0;i--)mn*=i;
-            k=n/mn;
+            int m=n-k;
+            for(int i=n-1;i>k;i--)n*=i;
+            for(int i=m-1;i>0;i--)m*=i;
+            k=n/m;
         }
         System.out.println(k);
     }
