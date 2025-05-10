@@ -7,17 +7,17 @@ class Main{
         StringBuilder as=new StringBuilder();
         int n=Integer.parseInt(I.readLine());
         char[] arr1=new char[n];
-        String[] arr2=new String[n];
 
-        Deque<String> dq=new ArrayDeque<>();
+        Deque<String> dq=new ArrayDeque<>(n);
 
         StringTokenizer st=new StringTokenizer(I.readLine());
         for(int i=0;i<n;i++) arr1[i]=st.nextToken().charAt(0);
 
         st=new StringTokenizer(I.readLine());
-        for(int i=0;i<n;i++) arr2[i]=st.nextToken();
-
-        for(int i=n-1;i>-1;i--) if(arr1[i]=='0') dq.offer(arr2[i]);
+        for(int i=0;i<n;i++){
+            String s=st.nextToken();
+            if(arr1[i]=='0') dq.offerFirst(s);
+        }
 
         int k=Integer.parseInt(I.readLine());
         st=new StringTokenizer(I.readLine());
