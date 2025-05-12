@@ -3,37 +3,25 @@ import java.util.*;
 class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-
         StringBuilder as=new StringBuilder();
         int n=Integer.parseInt(I.readLine());
-        int[] bal=new int[n],op=new int[n];
-
+        ArrayList<int[]> bal=new ArrayList<>(n);
         StringTokenizer st=new StringTokenizer(I.readLine());
-        for(int i=0;i<n;i++){
-            bal[i]=Integer.parseInt(st.nextToken());
+        for(int i=1;i<=n;i++){
+            bal.add(new int[]{Integer.parseInt(st.nextToken()),i});
         }
-
-        int ct=n,id=0;
-
-        for(int i=0;i<n;i++){
-            op[i]=id+1;
-            if(i==n-1) break;
-            int mv=bal[id];
-            bal[id]=0;
-            while(mv>0){
-                if(++id==n) id=0; 
-                if(bal[id]!=0) mv--;
-            }
-            while(mv<0){
-                if(--id<0) id=n-1;
-                if(bal[id]!=0) mv++;
-            }
+        int id=0;
+        while(n>1){
+            int[] bl=bal.get(id);
+            int mv=bl[0];
+            as.append(bl[1]).append(' ');
+            bal.remove(id--);
+            id=mv%--n+id;
+            if(mv<0) id++;
+            if(id<0) id=n+id;
+            else if(id>=n) id-=n;
         }
-
-        for(int i:op){
-            as.append(i).append(' ');
-        }
-
+        as.append(bal.get(0)[1]);
         System.out.println(as);
     }
 }
