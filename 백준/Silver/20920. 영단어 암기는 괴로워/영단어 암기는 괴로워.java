@@ -3,7 +3,7 @@ import java.util.*;
 class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder as=new StringBuilder();
 
         StringTokenizer st=new StringTokenizer(I.readLine());
         int n=Integer.parseInt(st.nextToken()),m=Integer.parseInt(st.nextToken());
@@ -27,9 +27,9 @@ class Main{
         });
 
         for(Map.Entry<String,Integer> e:wd){
-            O.write(e.getKey()+'\n');
+            as.append(e.getKey()).append('\n');
         }
 
-        O.flush();
+        System.out.println(as);
     }
 }
