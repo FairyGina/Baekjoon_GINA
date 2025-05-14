@@ -12,24 +12,26 @@ class Main{
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        HashMap<Character,Integer> need=new HashMap<>(),name=new HashMap<>();
+        int[] ap=new int[26],cp=new int[26];
+        char[] ca=new char[3];
         String s=I.readLine();
         for(int i=0;i<3;i++){
             char c=s.charAt(i);
-            if(need.containsKey(c)) need.put(c,need.get(c)+1);
-            else need.put(c,1);
-            name.put(c,0);
+            cp[c-65]++;
+            ca[i]=c;
         }
         int n=Integer.parseInt(I.readLine());
         for(int i=0;i<n;i++){
             s=I.readLine();
-            char c=s.charAt(0);
-            if(name.containsKey(c)) name.put(c,name.get(c)+1);
+            ap[s.charAt(0)-65]++;
         }
         long res=1;
-        for(Map.Entry<Character,Integer>i:need.entrySet()){
-            int nc=i.getValue(),ma=name.get(i.getKey());
-            res*=cb(ma,nc);
+        for(char c:ca){
+            int p=c-65;
+            if(cp[p]>0){
+                res*=cb(ap[p],cp[p]);
+                cp[p]=-1;
+            }
         }
         System.out.println(res);
     }
