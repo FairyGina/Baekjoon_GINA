@@ -5,11 +5,13 @@ class Main{
     static StringBuilder sp=new StringBuilder("   ");
     static void mkst(int ip){
         if(ip>n) return;
+
         int ct=ip/3,id=-1;
         String[] t=new String[ct];
         for(int i=0;i<ct;i++){
             t[i]=String.valueOf(star[i]);
         }
+
         int i=-1;
         while(++i<ct){
             star[++id]=new StringBuilder(t[i]);
@@ -26,20 +28,28 @@ class Main{
         }
         String ts=String.valueOf(sp);
         sp.append(ts).append(ts);
+
         mkst(ip*3);
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder as=new StringBuilder();
+
         n=Integer.parseInt(I.readLine());
+
         star=new StringBuilder[n];
+    
         star[0]=new StringBuilder("***");
         star[1]=new StringBuilder("* *");
         star[2]=new StringBuilder("***");
+
         mkst(9);
+
         for(int i=0;i<n;i++){
-            O.write(star[i]+"\n");
+            as.append(star[i]).append('\n');
         }
-        O.flush();
+
+        System.out.println(as);
     }
 }
