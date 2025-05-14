@@ -33,7 +33,6 @@ class Main{
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder as=new StringBuilder();
 
         n=Integer.parseInt(I.readLine());
@@ -49,7 +48,6 @@ class Main{
         for(int i=0;i<n;i++){
             as.append(star[i]).append('\n');
         }
-
         System.out.println(as);
     }
 }
