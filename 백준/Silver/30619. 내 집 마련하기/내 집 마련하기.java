@@ -1,50 +1,30 @@
 import java.io.*;
 import java.util.*;
 class Main{
-    static int[] copy;
-    static HashMap<Integer,Integer> hcp;
-    static void swap(int i,int j){
-        int t=copy[i];
-        copy[i]=copy[j];
-        copy[j]=t;
-        hcp.put(copy[i],i);
-        hcp.put(copy[j],j);
-    }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder as=new StringBuilder();
-
         int n=Integer.parseInt(I.readLine());
+        int[] home=new int[n+1],index=new int[n+1];
         StringTokenizer st=new StringTokenizer(I.readLine());
-
-        int[] home=new int[n];
-        HashMap<Integer,Integer> hs=new HashMap<>();
-        for(int i=0;i<n;i++){
+        for(int i=1;i<=n;i++){
             home[i]=Integer.parseInt(st.nextToken());
-            hs.put(home[i],i);
+            index[home[i]]=i;
         }
-
         int m=Integer.parseInt(I.readLine());
         while(m-->0){
             st=new StringTokenizer(I.readLine());
-            copy=home.clone();
+            int[] cp_home=home.clone(),cp_id=index.clone();
             int mn=Integer.parseInt(st.nextToken()),mx=Integer.parseInt(st.nextToken());
-            
-            hcp=new HashMap<>();
-            
-            for(int i=0;i<n;i++){
-                hcp.put(home[i],i);
+            for(int i=mn;i<=mx;i++){
+                cp_home[cp_id[i]]=0;
             }
-
-            for(int i=mn;i<mx;i++){
-                for(int j=i+1;j<=mx;j++){
-                    if(hcp.get(i)>hcp.get(j)){
-                        swap(hcp.get(i),hcp.get(j));
-                    }
-                }
+            int ct=1;
+            while(mn<=mx){
+                if(cp_home[ct]==0) cp_home[ct]=mn++;
+                ct++;
             }
-
-            for(int i:copy) as.append(i).append(' ');
+            for(int i=1;i<=n;i++) as.append(cp_home[i]).append(' ');
             as.append('\n');
         }
         System.out.println(as);
