@@ -3,16 +3,13 @@ import java.util.*;
 class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        Set<Character> hs=new HashSet<>();
-        hs.add('a');
-        hs.add('e');
-        hs.add('i');
-        hs.add('o');
-        hs.add('u');
+        char[] f={'a','e','i','o','u'};
         String s=I.readLine();
         int l=s.length(),i=l;
-        while(--i>-1){
-            if(hs.contains(s.charAt(i))) break;
+        L:while(--i>-1){
+            for(int j=0;j<5;j++){
+                if(s.charAt(i)==f[j]) break L;
+            }
         }
         s=s.substring(0,i+1);
         System.out.println(s+"ntry");
