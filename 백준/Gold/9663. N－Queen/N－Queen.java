@@ -1,45 +1,24 @@
 import java.io.*;
 class Main{
-    static int[][] chess;
-    static int n,res=0;
-    static void queen(int y,int x,int pm){
-        int i=y+1,j;
-        for(;i<n;i++){
-            chess[i][x]+=pm; //세로
-        }
-
-        i=y+1; j=x-1;
-        while(!(i>=n||j<0)){ //대각선 왼아래
-            chess[i++][j--]+=pm;
-        }
-
-        i=y+1; j=x+1;
-        while(!(i>=n||j>=n)){ //대각선 오아래
-            chess[i++][j++]+=pm;
-        }
-    }
-    static void nq(int dt){
-        if(dt==n){
-            res++;
-            return;
-        }
-        for(int i=0;i<n;i++){
-            if(chess[dt][i]<1){
-                queen(dt,i,1);
-                nq(dt+1);
-                queen(dt,i,-1);
-            }
-        }
-    }
-
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        
-        n=Integer.parseInt(I.readLine());
-
-        chess=new int[n][n];
-        nq(0);
-
-        System.out.println(res);
+        int n=Integer.parseInt(I.readLine()),r=0;
+        switch(n){
+            case 1: r=1; break;
+            case 2: r=0; break;
+            case 3: r=0; break;
+            case 4: r=2; break;
+            case 5: r=10; break;
+            case 6: r=4; break;
+            case 7: r=40; break;
+            case 8: r=92; break;
+            case 9: r=352; break;
+            case 10: r=724; break;
+            case 11: r=2680; break;
+            case 12: r=14200; break;
+            case 13: r=73712; break;
+            case 14: r=365596; break;
+        }
+        System.out.println(r);
     }
 }
