@@ -1,18 +1,17 @@
 import java.io.*;
 import java.util.*;
+
 class Main{
     static int n,max=-1000000000,min=1000000000;
     static boolean[] vt;
-    static char[] op,och={'+','-','*','/'};
-    static char[] oper;
-    static int[] nb;
-    static int cc(int a,int b,char c){
+    static int[] oper,nb,op;
+    static int cc(int a,int b,int c){
         switch(c){
-            case '+':
+            case 0:
                 return a+b;
-            case '-':
+            case 1:
                 return a-b;
-            case '*':
+            case 2:
                 return a*b;
             default:
                 return a/b;
@@ -36,17 +35,17 @@ class Main{
             }
         }
     }
-    static void opera(int st,int ct,char o){
+    static void opera(int st,int ct,int n){
         for(int i=0;i<ct;i++){
-            oper[i+st]=o;
+            oper[i+st]=n;
         }
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         n=Integer.parseInt(I.readLine());
         vt=new boolean[n-1];
-        op=new char[n-1];
-        oper=new char[n-1];
+        op=new int[n-1];
+        oper=new int[n-1];
         nb=new int[n];
         StringTokenizer st=new StringTokenizer(I.readLine());
         for(int i=0;i<n;i++){
@@ -56,7 +55,7 @@ class Main{
         st=new StringTokenizer(I.readLine());
         for(int i=0;i<4;i++){
             int tm=Integer.parseInt(st.nextToken());
-            opera(ta,tm,och[i]);
+            opera(ta,tm,i);
             ta+=tm;
         }
         cal(0);
