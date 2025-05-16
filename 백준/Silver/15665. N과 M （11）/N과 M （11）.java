@@ -2,21 +2,19 @@ import java.io.*;
 import java.util.*;
 class Main{
     static StringBuilder as=new StringBuilder();
-    static int n,m;
-    static int[] nb,ip;
-    static Set<String> hs;
+    static int n,m,sz;
+    static int[] nb;
+    static ArrayList<Integer> arr;
+    static Set<Integer> hs;
 
     static void seq(int id){
         if(id==m){
-            String t=Arrays.toString(nb);
-            if(hs.add(t)){
-                for(int i:nb) as.append(i).append(' ');
-                as.append('\n');
-            }
+            for(int i:nb) as.append(i).append(' ');
+            as.append('\n');
             return;
         }
-        for(int i=0;i<n;i++){
-            nb[id]=ip[i];
+        for(int i=0;i<sz;i++){
+            nb[id]=(int)arr.get(i);
             seq(id+1);
         }
     }
@@ -27,15 +25,17 @@ class Main{
         n=Integer.parseInt(st.nextToken()); m=Integer.parseInt(st.nextToken());
 
         hs=new HashSet<>();
-        ip=new int[n];
+        arr=new ArrayList<>();
+        nb=new int[m];
 
         st=new StringTokenizer(I.readLine());
+        
         for(int i=0;i<n;i++){
-            ip[i]=Integer.parseInt(st.nextToken());
+            int it=Integer.parseInt(st.nextToken());
+            if(hs.add(it)) arr.add(it);
         }
-
-        Arrays.sort(ip);
-        nb=new int[m];
+        sz=hs.size();
+        Collections.sort(arr);
 
         seq(0);
         System.out.println(as);
