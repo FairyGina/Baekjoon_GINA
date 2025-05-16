@@ -14,7 +14,7 @@ class Main{
             return;
         }
         for(int i=p;i<sz;i++){
-            nb[id]=(int)arr.get(i);
+            nb[id]=arr.get(i);
             seq(id+1,i);
         }
     }
