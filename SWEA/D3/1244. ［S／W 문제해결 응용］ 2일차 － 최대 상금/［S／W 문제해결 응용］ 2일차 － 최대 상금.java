@@ -1,10 +1,8 @@
 import java.io.*;
 import java.util.*;
 class Solution{
-    //static boolean[] vt;
     static int[] nb;
     static int len,limit,max;
-    //static HashSet<Integer> hs;
     static void swap(int i,int j){
         int t=nb[i];
         nb[i]=nb[j];
@@ -20,21 +18,15 @@ class Solution{
             for(int i:nb){
                 tr=tr*10+i;
             }
-            //System.out.println(tr);
             if(max<tr) max=tr;
             return;
         }
         for(int i=0;i<len;i++){
-            boolean[] vt=new boolean[len];
-            vt[i]=true;
-            for(int j=i;j<len;j++){
-                if(!vt[j]){
-                    swap(i,j);
-                    card(ct+1);
-                    swap(i,j);
-                }
+            for(int j=i+1;j<len;j++){
+                swap(i,j);
+                card(ct+1);
+                swap(i,j);
             }
-            vt[i]=false;
         }
     }
     public static void main(String[] args)throws Exception{
@@ -46,12 +38,10 @@ class Solution{
             StringTokenizer st=new StringTokenizer(I.readLine());
             String s=st.nextToken();
             limit=Integer.parseInt(st.nextToken());
-
+ 
             len=s.length();
-            //hs=new HashSet<>();
-            //vt=new boolean[len];
             nb=new int[len];
-
+ 
             max=0;
             for(int i=0;i<len;i++){
                 nb[i]=s.charAt(i)-'0';
