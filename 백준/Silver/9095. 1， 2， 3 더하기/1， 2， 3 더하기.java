@@ -1,13 +1,17 @@
 import java.io.*;
-class Main{
-    public static void main(String[] args)throws Exception{
+class Main{    public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));    
+        StringBuilder as=new StringBuilder();
+        int[] dp=new int[11];
+        dp[1]=1; dp[2]=2; dp[3]=4;
+        for(int i=4;i<11;i++){
+            dp[i]=dp[i-1]+dp[i-2]+dp[i-3];
+        }
         int t=Integer.parseInt(I.readLine());
-        int[] d=new int[12];
-        d[1]=1; d[2]=2; d[3]=4; 
-        for(int i=4;i<12;i++) d[i]=d[i-1]+d[i-2]+d[i-3];
-        while(t-->0) O.write(d[Integer.parseInt(I.readLine())]+"\n");
-        O.flush();
+        while(t-->0){
+            int n=Integer.parseInt(I.readLine());
+            as.append(dp[n]).append('\n');
+        }
+        System.out.println(as);
     }
 }
