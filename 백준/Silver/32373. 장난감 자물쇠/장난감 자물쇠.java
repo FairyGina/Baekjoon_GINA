@@ -5,22 +5,15 @@ class Main{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(I.readLine());
         int n=Integer.parseInt(st.nextToken()),k=Integer.parseInt(st.nextToken());
-
-        int[] loc=new int[n];
         st=new StringTokenizer(I.readLine());
+        boolean b=true;
         for(int i=0;i<n;i++){
             int ti=Integer.parseInt(st.nextToken());
-            loc[ti]=i;
-        }
-        String a="Yes";
-        for(int i=0;i<n;i++){
-            if(loc[i]!=i){
-                if((loc[i]-i)%k!=0){
-                    a="No";
-                    break;
-                }
+            if((ti-i)%k!=0){
+                b=false;
+                break;
             }
         }
-        System.out.print(a);
+        System.out.print(b?"Yes":"No");
     }
 }
