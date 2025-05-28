@@ -5,19 +5,19 @@ class Main{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder as=new StringBuilder();
         int n;
-        LinkedHashMap<String,Double>tm=new LinkedHashMap<>();
         while((n=Integer.parseInt(I.readLine()))!=0){
-            tm.clear();
+            String[] name=new String[n];
+            double[] key=new double[n];
             double max=0;
             for(int i=0;i<n;i++){
                 StringTokenizer st=new StringTokenizer(I.readLine());
-                String a=st.nextToken(); double b=Double.parseDouble(st.nextToken());
-                if(max<b) max=b;
-                tm.put(a,b);
+                name[i]=st.nextToken();
+                key[i]=Double.parseDouble(st.nextToken());
+                if(key[i]>max) max=key[i];
             }
-            for (Map.Entry<String,Double> et:tm.entrySet()){
-                double td=et.getValue();
-                if(td==max) as.append(et.getKey()).append(' ');
+            
+            for(int i=0;i<n;i++){
+                if(max==key[i]) as.append(name[i]).append(' ');
             }
             as.append('\n');
         }
