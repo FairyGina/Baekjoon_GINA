@@ -25,7 +25,7 @@ class Main{
                     res++;
                 }
             }
-            as.append(String.format("%d %d\n",nb,res));
+            as.append(nb).append(' ').append(res).append('\n');
         }
         System.out.print(as);
     }
