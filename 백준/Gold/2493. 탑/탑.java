@@ -5,23 +5,23 @@ class Main{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringBuilder as=new StringBuilder();
         int n=Integer.parseInt(I.readLine());
-        int[] top=new int[n+1],ans=new int[n];
+        int[] ip=new int[n+1],ans=new int[n],top=new int[1000000];
         StringTokenizer st=new StringTokenizer(I.readLine());
         for(int i=1;i<=n;i++){
-            top[i]=Integer.parseInt(st.nextToken());
+            ip[i]=Integer.parseInt(st.nextToken());
         }
-        Stack<Integer>sk=new Stack<>();
+        int t=-1;
         for(int i=n;i>-1;i--){
-            while(!sk.isEmpty()){
-                int x=sk.pop(),id=sk.pop();
-                if(top[i]<x){
-                    sk.push(id); sk.push(x);
+            while(t>-1){
+                int x=top[t--],id=top[t--];
+                if(ip[i]<x){
+                    top[++t]=id; top[++t]=x;
                     break;
                 }else{
                     ans[id-1]=i;
                 }
             }
-            sk.push(i); sk.push(top[i]);
+            top[++t]=i; top[++t]=ip[i];
         }
         for(int i:ans) as.append(i).append(' ');
         System.out.print(as);
