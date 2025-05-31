@@ -10,12 +10,10 @@ class Main{
         while(as++<n) lt=I.readLine();
 
         as=Integer.parseInt(lt);
-        if((e%w==0&w%q==0)&&(e/w==w/q)){
-            int d=e/w;
-            as*=d;
+        if((q+e)==2*w){
+            as+=e-w;
         }else{
-            int d=e-w;
-            as+=d;
+            as*=e/w;
         }
         System.out.print(as);
     }
