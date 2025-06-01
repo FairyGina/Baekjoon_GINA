@@ -12,7 +12,6 @@ class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(I.readLine());
-        String a=st.nextToken(),b=st.nextToken();
-        System.out.print(sum(a)*sum(b));
+        System.out.print(sum(st.nextToken())*sum(st.nextToken()));
     }
 }
