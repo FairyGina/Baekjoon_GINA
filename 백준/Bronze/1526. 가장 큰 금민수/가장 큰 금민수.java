@@ -1,22 +1,16 @@
 import java.io.*;
 class Main{
-    static boolean sc(String s){
-        int len=s.length();
-        for(int i=0;i<len;i++){
-            if(s.charAt(i)!='4'&&s.charAt(i)!='7') return false;
-        }
-        return true;
+    static int r,n;
+    static void dfs(int nb){
+        if(nb>n) return;
+        r=Math.max(r,nb);
+        dfs(nb*10+4);
+        dfs(nb*10+7);
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        int n=Integer.parseInt(I.readLine());
-        while(n>3){
-            String s=String.valueOf(n);
-            if(sc(s)){
-                System.out.print(n);
-                break;
-            }
-            n--;
-        }
+        n=Integer.parseInt(I.readLine());
+        dfs(4); dfs(7);
+        System.out.print(r);
     }
 }
