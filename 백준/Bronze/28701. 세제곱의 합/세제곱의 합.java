@@ -6,6 +6,7 @@ class Main{
         int res=n*(n+1)/2;
         System.out.println(res);
         res*=res;
-        System.out.print(res+"\n"+res);
+        System.out.println(res);
+        System.out.print(res);
     }
 }
