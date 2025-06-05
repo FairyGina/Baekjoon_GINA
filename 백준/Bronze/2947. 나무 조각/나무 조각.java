@@ -12,7 +12,7 @@ class Main{
         for(int t=0;t<4;t++){
             int lm=7-t*2;
             for(int i=0;i<lm;i+=2){
-                if((int)arr[i]>(int)arr[i+2]){
+                if(arr[i]>arr[i+2]){
                     char c=arr[i];
                     arr[i]=arr[i+2];
                     arr[i+2]=c;
