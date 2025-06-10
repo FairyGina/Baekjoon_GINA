@@ -12,6 +12,7 @@ class Main{
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder as=new StringBuilder();
         StringTokenizer st=new StringTokenizer(I.readLine());
 
         String s=st.nextToken();
@@ -26,14 +27,16 @@ class Main{
         for(int i=0;i<len;i++){
             b[i]=s.charAt(i);
         }
+
         ch(a,'6','5');
         ch(b,'6','5');
         len=Integer.parseInt(String.valueOf(a))+Integer.parseInt(String.valueOf(b));
-        System.out.print(len+" ");
+        as.append(len).append(' ');
 
         ch(a,'5','6');
         ch(b,'5','6');
         len=Integer.parseInt(String.valueOf(a))+Integer.parseInt(String.valueOf(b));
-        System.out.print(len);
+        as.append(len);
+        System.out.print(as);
     }
 }
