@@ -15,24 +15,20 @@ class Main{
     }
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-
         StringBuilder as=new StringBuilder();
         String s;
         while(!(s=I.readLine()).equals("0")){
             StringTokenizer st=new StringTokenizer(s);
             int n=Integer.parseInt(st.nextToken());
             int game=n*(n-1)/2*Integer.parseInt(st.nextToken());
-
             Arrays.fill(wsc,0);
             Arrays.fill(lsc,0);
             while(game-->0){
                 st=new StringTokenizer(I.readLine());
-
                 h1=Integer.parseInt(st.nextToken());
                 c1=st.nextToken().charAt(0);
                 h2=Integer.parseInt(st.nextToken());
                 c2=st.nextToken().charAt(0);
-
                 if(c1=='r'){
                     rps('s','p');
                 }else if(c1=='s'){
@@ -46,7 +42,7 @@ class Main{
                 if(num<1){
                     as.append("-\n");
                 }else{
-                    as.append(String.format("%.3f",(double)wsc[i]/(double)(wsc[i]+lsc[i]))).append('\n');
+                    as.append(String.format("%.3f",(double)wsc[i]/(double)num)).append('\n');
                 }
             }
             as.append('\n');
