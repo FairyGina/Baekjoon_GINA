@@ -3,17 +3,16 @@ import java.io.*;
 class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
+        
         StringTokenizer st=new StringTokenizer(I.readLine());
-        int n=Integer.parseInt(st.nextToken()),k=Integer.parseInt(st.nextToken());
-        ArrayList<Integer> arr=new ArrayList<>();
+        int n=Integer.parseInt(st.nextToken()),k=Integer.parseInt(st.nextToken())-1;
+        int[] nb=new int[n];
         for(int i=0;i<n;i++){
             st=new StringTokenizer(I.readLine());
             int c=Integer.parseInt(st.nextToken())-Integer.parseInt(st.nextToken());
-            if(c<0){
-                arr.add(-c);
-            }else k--;
+            nb[i]=-c;
         }
-        Collections.sort(arr);
-        System.out.print(k<1?0:arr.get(k-1));
+        Arrays.sort(nb);
+        System.out.print(nb[k]<1?0:nb[k]);
     }
 }
