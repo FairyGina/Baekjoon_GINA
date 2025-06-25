@@ -13,9 +13,8 @@ class Main{
         }
         st=new StringTokenizer(I.readLine());
         for(int i=0;i<n;i++){
-            res+=(double)((h[i]+h[i+1])*Integer.parseInt(st.nextToken()))/2;
+            res+=(h[i]+h[i+1])*Integer.parseInt(st.nextToken())/2.0;
         }
-        if(res==(long)res) System.out.printf("%.0f",res);
-        else System.out.print(res);
+        System.out.print(res);
     }
 }
