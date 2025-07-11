@@ -1,8 +1,7 @@
-import java.util.Scanner;
+import java.io.*;
 public class Main{
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
-        int a=sc.nextInt();
-        System.out.print(a-543);
+    public static void main(String[] args)throws Exception{
+        BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
+        System.out.print(Integer.parseInt(I.readLine())-543);
     }
 }
