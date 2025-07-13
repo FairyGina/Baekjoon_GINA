@@ -1,17 +1,13 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 class Main{
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(I.readLine()),res=0;
-        char[] tr=new char[n];
         StringTokenizer st=new StringTokenizer(I.readLine());
+        String c=I.readLine();
         for(int i=0;i<n;i++){
-            tr[i]=st.nextToken().charAt(0);
-        }
-        char c=I.readLine().charAt(0);
-        for(int i=0;i<n;i++){
-            if(tr[i]==c) res++;
+            if(c.equals(st.nextToken())) res++;
         }
         System.out.print(res);
     }
