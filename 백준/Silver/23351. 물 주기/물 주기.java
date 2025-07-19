@@ -5,17 +5,11 @@ public class Main{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(I.readLine());
         int n=Integer.parseInt(st.nextToken()),k=Integer.parseInt(st.nextToken()),a=Integer.parseInt(st.nextToken()),b=Integer.parseInt(st.nextToken()),day=0;
-        int[] pl=new int[n];
-        Arrays.fill(pl,k);
-        while(pl[0]!=0){
+        n/=a;
+        while(k>0){
             day++;
-            for(int i=0;i<n;i++){
-                pl[i]--;
-            }
-            for(int i=0;i<a;i++){
-                pl[i]+=b;
-            }
-            Arrays.sort(pl);
+            k--;
+            if(day%n==0) k+=b;
         }
         System.out.print(day);
     }
