@@ -1,28 +1,4 @@
 import sys
-ct=0
-nb=[0]*5
-vt=[False]*10
-def sc(dt):
-    global ct
-    if dt==5:
-        tnb=''.join(map(str,nb))
-        tx=str(int(tnb)*9)
-        if len(tx)==5:
-            tvt=vt[:]
-            for ch in tx:
-                d=int(ch)
-                if tvt[d]: return
-                tvt[d]=True
-            ct+=1
-            if ct==n:
-                print(f"{tx} {tnb}")
-                return
-        return
-    for i in range(10):
-        if not vt[i]:
-            vt[i]=True
-            nb[dt]=i
-            sc(dt+1)
-            vt[i]=False
-n=int(sys.stdin.readline().rstrip())
-sc(0)
+n=int(sys.stdin.readline().rstrip())-1
+nb=['57429 06381','58239 06471','75249 08361','95742 10638','95823 10647','97524 10836']
+print(nb[n])
