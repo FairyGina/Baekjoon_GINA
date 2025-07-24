@@ -1,24 +1,25 @@
 import sys
 def input(): return sys.stdin.readline().rstrip()
-op=[]
 n,k=map(int,input().split())
-k=k*2+1
-lm=10**6+1
+k=k*2
+lm=int(1e6)+1
 nb=[0]*lm
-num=[0]*(lm+1)
-mi=0
 
+mxi,mni=0,lm
 for i in range(n):
     g,id=map(int,input().split())
-    if id>lm: continue
     nb[id]=g
-    if mi<id: mi=id
-for i in range(lm):
-    num[i+1]=num[i]+nb[i]
-n=-1
-for i in range(k,mi+2):
-    tn=num[i]-num[i-k]
-    if n<tn: n=tn
-    
-if n==-1: n=num[lm]
+    if mxi<id: mxi=id
+    if mni>id: mni=id
+
+if mni+k>=lm: n=-1
+else:
+    num=sum(nb[mni:mni+k+1])
+    n=num
+
+for i in range(mni+k+1,mxi+1):
+    num=num-nb[i-k-1]+nb[i]
+    if num>n: n=num
+
+if n==-1: n=sum(nb[mni:mxi+1])
 print(n)
