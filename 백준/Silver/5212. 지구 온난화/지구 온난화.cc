@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
 using namespace std;
+
 int main(){
     fastio;
     ostringstream as;
@@ -8,7 +9,6 @@ int main(){
     int r,c;
     cin>>r>>c;
     vector<vector<char>> ume(r,vector<char>(c)),cu(r,vector<char>(c));
-
     for(int i=0;i<r;i++){
         string s;
         cin>>s;
@@ -41,8 +41,7 @@ int main(){
         }
     }
     for(int i=sy;i<=ey;i++){
-        for(int j=sx;j<=ex;j++) as<<cu[i][j];
-        as<<'\n';
+        for(int j=sx;j<=ex;j++) printf("%c",cu[i][j]);
+        printf("\n");
     }
-    cout<<as.str();
 }
