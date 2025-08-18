@@ -1,22 +1,24 @@
 import sys
 
 n=int(input())
-if n<4:
-    print(n+1)
-    
-else:
-    ct=2
-    nb=4
-    while True:
+ct,nb=0,2
+while True:
+    if nb<4:
+        ct+=1
+    elif nb%2==0 or nb%3==0:
+        nb+=1
+        continue
+    else:
+        i=5
         bl=True
-        i=2
         while i*i<=nb:
-            if nb%i==0:
+            if nb%i==0 or nb%(i+2)==0:
                 bl=False
                 break
-            i+=1
+            i+=6
         if bl: ct+=1
-        if ct==n:
-            print(nb)
-            break
-        nb+=1
+        
+    if ct==n:
+        print(nb)
+        break
+    nb+=1
