@@ -1,5 +1,6 @@
 import sys
 def input(): return sys.stdin.readline().rstrip()
+ap="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 op=[]
 for _ in range(int(input())):
     cm=[]
@@ -7,6 +8,6 @@ for _ in range(int(input())):
     b-=65
     ip=input()
     for c in ip:
-        cm.append(chr((a*ord(c)+b)%26+65))
+        cm.append(ap[(a*ord(c)+b)%26])
     op.append(''.join(cm))
 print('\n'.join(op))
