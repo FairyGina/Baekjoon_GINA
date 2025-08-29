@@ -1,19 +1,18 @@
 import sys
-from collections import deque
 def input(): return sys.stdin.readline().rstrip()
 op=[]
-dq=deque()
+dq=[]
 for _ in range(int(input())):
     ip=input().split()
     tn=-1
     if ip[0]=="push_front":
-        dq.appendleft(int(ip[1]))
+        dq.insert(0,int(ip[1]))
         continue
     elif ip[0]=="push_back":
         dq.append(int(ip[1]))
         continue
     elif ip[0]=="pop_front":
-        if dq: tn=dq.popleft()
+        if dq: tn=dq.pop(0)
     elif ip[0]=="pop_back":
         if dq: tn=dq.pop()
     elif ip[0]=="size":
