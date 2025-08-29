@@ -7,6 +7,12 @@ while True:
     if a=="END": break
     idx+=1
     op.append(f"Case {idx}: ")
-    if sorted(a)==sorted(b): op.append("same\n")
+    ap=[0]*26
+    bl=True
+    for i in range(97,123):
+        if a.count(chr(i))!=b.count(chr(i)):
+            bl=False
+            break
+    if bl: op.append("same\n")
     else: op.append("different\n")
 print(''.join(op))
