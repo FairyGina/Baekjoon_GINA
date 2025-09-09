@@ -1,22 +1,17 @@
 import sys
 def input(): return sys.stdin.readline().rstrip()
 def fd(n):
-    num=0
+    x,p=n,2
     st=set()
-    while True:
-        if n==pf[n]:
-            num+=n
-            if n in st: num+=n
-            return num
-        if not pf[n] in st: num-=pf[n]
-        st.add(pf[n])
-        n//=pf[n]
-nlm=10**6+1
-pf=[0]*nlm
-for i in range(2,nlm):
-    if pf[i]==0: pf[i]=i
-    for j in range(i*i,nlm,i):
-        if pf[j]<1: pf[j]=i
+    while p*p<=x:
+        if x%p==0:
+            st.add(p)
+            x//=p
+        else: p+=1
+    if x>1: st.add(x)
+    p=max(st)
+    st.remove(p)
+    return p-sum(st)
 op=[]
 while True:
     a,b=map(int,input().split())
