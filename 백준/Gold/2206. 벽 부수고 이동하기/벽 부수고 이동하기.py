@@ -38,7 +38,7 @@ def bfs():
             y,x=dq2.popleft()
             for i in range(4):
                 ty,tx=y+mv[i][0],x+mv[i][1]
-                if 0<=ty<=n and 0<=tx<=m and vt2[ty][tx] and board[ty][tx]=='0':
+                if 0<=ty<=n and 0<=tx<=m and vt1[ty][tx] and vt2[ty][tx] and board[ty][tx]=='0':
                     if ty==n and tx==m: return ct+1
                     vt2[ty][tx]=False
                     tq2.append((ty,tx))
