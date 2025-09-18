@@ -17,16 +17,14 @@ def bfs():
         tq.clear()
         while dq:
             me=dq.pop()
-            lm,mb=min(99,me+6),me
+            lm=min(99,me+6)
             if me==99: return ct
             for i in range(lm,lm-6,-1):
                 y,x=i//10,i%10
                 if board[y][x]<0: continue
-                if board[y][x]<1: mb=max(mb,i)
-                else:
-                    ty,tx=board[y][x]//10,board[y][x]%10
-                    if board[ty][tx]==0: tq.append(board[y][x])
-            if me<mb: tq.append(mb)
+                if board[y][x]<1: tq.append(i)
+                else: tq.append(board[y][x])
+                board[y][x]=-1
         dq=list(tq)
         ct+=1
 print(bfs())
