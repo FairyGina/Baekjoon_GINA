@@ -1,13 +1,11 @@
 import sys
 def input(): return sys.stdin.readline().rstrip()
-
 def bs(tr):
     lf,rt=0,n
     while lf<rt:
         mid=(lf+rt)//2
-        if tree[mid]<tr: rt=mid
-        elif tree[mid]>tr: lf=mid+1
-        else: return mid
+        if tree[mid]>tr: lf=mid+1
+        else: rt=mid
     return lf
     
 def fd():
@@ -22,13 +20,10 @@ def fd():
             ans=mid
         else: rt=mid-1
     return ans
-
 n,m=map(int,input().split())
 tree=list(map(int,input().split()))
-tree.append(0)
 tree.sort(reverse=True)
-
 num=[0]*(n+1)
 for i in range(n):
-    num[i+1]+=tree[i]+num[i]
+    num[i+1]=tree[i]+num[i]
 print(fd())
