@@ -1,24 +1,33 @@
-import java.io.*;
 import java.util.*;
-class Main{
+import java.io.*;
+
+public class Main {
     public static void main(String[] args)throws Exception{
         BufferedReader I=new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter O=new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n=Integer.parseInt(I.readLine());
-        HashSet<String> s=new HashSet<>();
-        for(int i=0;i<n;i++){
-            s.add(I.readLine());
+        int t=Integer.parseInt(I.readLine());
+        Set<String> set=new HashSet<>();
+        for(int i=0;i<t;i++){
+            set.add(I.readLine());
         }
-        List<String> l=new ArrayList<>(s);
-        Collections.sort(l,(a,b)->{
-            int lc=a.length()-b.length();
-            if(lc==0) return a.compareTo(b);
-            else return lc;
+
+        String[] arr=new String[set.size()];
+        int idx=0;
+        for(String str:set){
+            arr[idx++]=str;
+        }
+
+        Arrays.sort(arr,new Comparator<String>(){
+            @Override
+            public int compare(String a,String b){
+                int aln=a.length(), bln=b.length();
+                if(aln!=bln) return aln-bln;
+                return a.compareTo(b);
+            }
         });
-        for(String i:l){
-            O.write(i+"\n");
-        }
-        O.flush();
+
+        StringBuilder ans=new StringBuilder();
+        for(String str:arr) ans.append(str).append('\n');
+        System.out.print(ans);
     }
 }
