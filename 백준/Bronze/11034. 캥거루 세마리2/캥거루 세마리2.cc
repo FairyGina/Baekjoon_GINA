@@ -1,0 +1,12 @@
+#include<iostream>
+using namespace std;
+int main() {
+    int a, b, c;
+    while(cin >> a >> b >> c){
+	    if (c - b > b - a)
+	    	cout << c - b - 1<<"\n";
+	    else
+	    	cout << b - a - 1<<"\n";
+    }
+	return 0;
+}
